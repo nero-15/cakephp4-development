@@ -16,7 +16,7 @@
 		</td>
 		<td>
 			<?= $this->Html->link('編集', ['action' => 'edit', $article->slug]) ?>
-			<?= $this->Form->postLink(
+			<?= $this->Form->pobistLink(
 				'削除',
 				['action' => 'delete', $article->slug],
 				['confirm' => 'よろしいですか?'])
