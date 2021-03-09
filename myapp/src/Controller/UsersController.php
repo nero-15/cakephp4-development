@@ -9,7 +9,7 @@ class UsersController extends AppController
 	public function beforeFilter(\Cake\Event\EventInterface $event)
 	{
 		parent::beforeFilter($event);
-		$this->Authentication->addUnauthenticatedActions(['login']);
+		$this->Authentication->addUnauthenticatedActions(['login', 'add']);
 	}
 
 	public function login()
@@ -29,6 +29,16 @@ class UsersController extends AppController
 		// ユーザーが submit 後、認証失敗した場合は、エラーを表示します
 		if ($this->request->is('post') && !$result->isValid()) {
 			$this->Flash->error('Invalid username or password');
+		}
+	}
+
+	public function logout()
+	{
+		$result = $this->Authentication->getResult();
+		// POST, GET を問わず、ユーザーがログインしている場合はリダイレクトします
+		if ($result->isValid()) {
+			$this->Authentication->logout();
+			return $this->redirect(['controller' => 'Users', 'action' => 'login']);
 		}
 	}
 
