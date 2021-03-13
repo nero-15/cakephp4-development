@@ -59,5 +59,7 @@ class PagesController extends AppController
 			'Articles' => $Articles,
 			'doComplexOperation' => $this->Math->doComplexOperation(10, 20)
 		]);
+
+		$this->Flash->greatSuccess('This was greatly successful');
 	}
 }
