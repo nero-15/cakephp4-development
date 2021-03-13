@@ -15,6 +15,7 @@ class PagesController extends AppController
 	{
 		parent::initialize();
 		$this->loadComponent('Math');
+		$this->loadComponent('Paginator');
 	}
 
 	public function display(string ...$path): ?Response
@@ -49,14 +50,13 @@ class PagesController extends AppController
 	{
 		$this->loadModel('Articles');
 		$Articles = $this->Articles->find('all', [
-			'limit' => 5,
-			'order' => 'Articles.created DESC'
+			'order' => 'Articles.id DESC'
 		]);
 
 		$this->set([
 			'h1' => 'ワークスペース',
 			'discription' => '内容です。',
-			'Articles' => $Articles,
+			'Articles' => $this->paginate($Articles),
 			'doComplexOperation' => $this->Math->doComplexOperation(10, 20)
 		]);
 
