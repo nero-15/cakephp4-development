@@ -11,6 +11,12 @@ use Cake\View\Exception\MissingTemplateException;
 
 class PagesController extends AppController
 {
+	public function initialize(): void
+	{
+		parent::initialize();
+		$this->loadComponent('Math');
+	}
+
 	public function display(string ...$path): ?Response
 	{
 		if (!$path) {
@@ -50,7 +56,8 @@ class PagesController extends AppController
 		$this->set([
 			'h1' => 'ワークスペース',
 			'discription' => '内容です。',
-            'Articles' => $Articles
+			'Articles' => $Articles,
+			'doComplexOperation' => $this->Math->doComplexOperation(10, 20)
 		]);
 	}
 }

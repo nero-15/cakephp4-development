@@ -1,6 +1,7 @@
 <h1><?php echo h($h1); ?></h1>
 <div>
 	<p><?php echo h($discription); ?></p>
+	<p><?php echo h($doComplexOperation); ?></p>
 </div>
 <table>
 	<tr>
