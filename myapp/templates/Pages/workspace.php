@@ -3,6 +3,9 @@
 	<p><?php echo h($discription); ?></p>
 	<p><?php echo h($doComplexOperation); ?></p>
 </div>
+<div>
+	<p><?= $this->cell('Inbox')->render() ?></p>
+</div>
 <table>
 	<tr>
 		<th>タイトル</th>
