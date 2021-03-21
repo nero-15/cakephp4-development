@@ -10,7 +10,11 @@ use Cake\ORM\Query;
 
 class ArticlesTable extends Table
 {
-	
+	/*
+	public static function defaultConnectionName() {
+		return 'slavedb';
+	}
+	*/
 
 	public function initialize(array $config) : void
 	{
