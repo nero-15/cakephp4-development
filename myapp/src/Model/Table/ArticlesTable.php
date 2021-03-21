@@ -10,10 +10,18 @@ use Cake\ORM\Query;
 
 class ArticlesTable extends Table
 {
+	
 
 	public function initialize(array $config) : void
 	{
-		$this->addBehavior('Timestamp');
+		$this->addBehavior('Timestamp', [
+			'events' => [
+				'Model.beforeSave' => [
+					'created_at' => 'new',
+					'modified_at' => 'always'
+				]
+			]
+		]);
 		$this->belongsToMany('Tags');
 	}
 
